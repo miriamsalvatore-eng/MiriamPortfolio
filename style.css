@@ -1,0 +1,576 @@
+:root {
+    --bg-color: #ff0d0d;
+    /* Il tuo iconico rosso acceso */
+    --card-black: #0a0a0a;
+    --card-white: #ffffff;
+    --text-main: #ffffff;
+    --font-sans: 'Syne', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-hand: 'Caveat', cursive;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    padding-bottom: 100px;
+}
+
+/* --- NAVBAR IN BASSO FIXED --- */
+.navbar {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 10, 10, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: flex;
+    gap: 20px;
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.navbar a {
+    color: #888;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* --- CONTENITORE --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+section {
+    display: none;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+section.active-section {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- 1. HOME SECTION --- */
+.hero {
+    min-height: 100vh; /* Copre tutta l'altezza dello schermo */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra perfettamente in verticale */
+    align-items: flex-start; /* Mantiene tutto allineato a sinistra */
+    text-align: left;
+    padding: 0;
+    margin-top: -0.5px; /* Bilancia visivamente lo spazio della navbar in basso */
+}
+
+.hero h1 {
+    font-family: var(--font-sans);
+    font-size: 8rem;
+    line-height: 0.8;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: -3px;
+    margin-bottom: 25px;
+}
+
+.hero-info {
+    max-width: 650px;
+}
+
+.hero-name {
+    font-family: var(--font-hand);
+    font-size: 3rem;
+    color: #000000;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.hero-info p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.linkedin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--card-black);
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-weight: bold;
+    margin-top: 30px;
+    transition: all 0.3s ease;
+}
+
+.linkedin-btn:hover {
+    background: #fff;
+    color: #000;
+    transform: translateY(-2px);
+}
+
+/* --- 2. ABOUT SECTION --- */
+.about-layout {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
+}
+
+.about-main-card {
+    grid-column: span 8;
+    background-color: var(--card-black);
+    padding: 45px;
+    border-radius: 24px;
+}
+
+.about-sidebar {
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.about-title {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    opacity: 0.5;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.about-main-card p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    opacity: 0.95;
+    font-weight: 300;
+}
+
+.mini-card {
+    background: var(--card-black);
+    border-radius: 24px;
+    padding: 30px;
+}
+
+.mini-card.white {
+    background: var(--card-white);
+    color: #000;
+}
+
+.mini-card.gradient {
+    background: radial-gradient(circle at center, #ff3b3b 0%, #aa0000 100%);
+}
+
+.timeline {
+    margin-top: 30px;
+}
+
+.timeline-item {
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    padding-left: 25px;
+    position: relative;
+    padding-bottom: 30px;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--bg-color);
+}
+
+.time-header {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+.time-company {
+    color: var(--bg-color);
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.timeline-item ul {
+    padding-left: 15px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.skills-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tag {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+.white .skill-tag {
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.lang-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+}
+
+/* --- 3. WORK SECTION --- */
+.work-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.tab-btn {
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+.work-content {
+    display: none;
+}
+
+.work-content.active-content {
+    display: block;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.placeholder-box {
+    position: relative;
+    overflow: hidden;
+    background: var(--card-black);
+    aspect-ratio: 1;
+    border-radius: 16px;
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.3);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    transition: all 0.3s;
+}
+
+.placeholder-box:hover {
+    border-color: #fff;
+    color: #fff;
+    transform: scale(1.02);
+}
+
+.placeholder-box:hover img {
+    opacity: 0.6;
+}
+
+.placeholder-box img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1; /* Rimosso l'alone scuro, ora l'immagine è visibile al 100% */
+    transition: all 0.3s ease-in-out;
+}
+
+.video-showcase {
+    background: var(--card-black);
+    border-radius: 24px;
+    padding: 50px;
+    max-width: 550px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.podcast-cover-mock {
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 1;
+    background: #151515;
+    margin: 0 auto 25px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #00ffcc;
+    border: 3px solid #fff;
+    overflow: hidden; /* Taglia l'immagine se esce dagli angoli arrotondati */
+}
+
+/* --- NUOVA REGOLA DA AGGIUNGERE --- */
+.podcast-cover-mock img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Adatta la foto al quadrato senza deformarla */
+}
+
+.youtube-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #ff0000;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-weight: bold;
+    margin-top: 15px;
+    transition: transform 0.3s;
+}
+
+.youtube-btn:hover {
+    transform: scale(1.05);
+}
+
+/* --- 4. CONTACT SECTION --- */
+.contact-container {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-card-box {
+    background: var(--card-black);
+    border-radius: 28px;
+    width: 100%;
+    max-width: 950px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.contact-text-side {
+    padding: 40px 45px; /* Ottimizza lo spazio interno per i testi */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.contact-text-side h2 {
+    font-family: var(--font-sans);
+    font-size: 3.5rem; /* Leggermente ridotto per proporzione */
+    line-height: 0.9;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.email-link {
+    color: var(--bg-color);
+    font-size: 1.15rem; /* Dimensione perfetta per far stare l'email su una riga sola */
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap; /* Forza il codice a tenere l'email su un'unica linea */
+    transition: opacity 0.3s;
+}
+
+.email-link:hover {
+    opacity: 0.8;
+}
+
+.contact-image-side {
+    background: #181818;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 400px;
+}
+
+.contact-image-side::before {
+    content: "Insert your image here";
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    opacity: 0.2;
+    letter-spacing: 1px;
+}
+
+.contact-image-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media(max-width: 900px) {
+    .hero h1 {
+        font-size: 4.5rem;
+    }
+
+    .about-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .about-main-card,
+    .about-sidebar {
+        grid-column: span 12;
+    }
+
+    .contact-card-box {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-text-side {
+        padding: 40px 30px;
+    }
+
+    .contact-image-side {
+        min-height: 300px;
+    }
+
+    .navbar {
+        width: 92%;
+        justify-content: space-around;
+        padding: 10px 5px;
+    }
+
+    .navbar a {
+        padding: 6px 12px;
+        font-size: 0.60rem;
+    }
+}
+
+/* --- LIGHTBOX (ZOOM IMMAGINI) --- */
+.lightbox {
+    display: none; /* Nascosto di base */
+    position: fixed;
+    z-index: 2000; /* Sopra a tutto, anche alla navbar */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 10, 10, 0.95); /* Sfondo scuro elegante */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Quando il lightbox viene attivato */
+.lightbox.show {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 85%;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.lightbox.show img {
+    transform: scale(1); /* Effetto leggero zoom in apertura */
+}
+
+/* Pulsante di chiusura (X) */
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 300;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.lightbox-close:hover {
+    transform: scale(1.1);
+}
